@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header', { title: title }) %>
+<link rel="stylesheet" href="/css/auth.css">
+<body>
+    <%- include('../partials/nav') %>
+    <%- include("../partials/alerts.ejs") %>
+    <div class="container formHolder">
+        <div class="formTitle">
+            <h3>Upgrade Membership</h3>
+        </div>
+        <%- include("../partials/errors.ejs") %>
+        <% if (locals.user.member) { %>
+            <form class="authForm" action="<%= `${locals.baseUrl}/account` %>" method="POST">
+                <div class="adminRow">
+                    <div class="adminInput">
+                        <input id="basic" value="basic" name="member" type="radio" <%= locals.user.member==='basic'  ? 'checked' : '' %>>
+                        <label for="basic">Basic</label>
+                    </div>
+                    <div class="adminInput">
+                        <input id="admin" value="admin" name="member" type="radio"  <%= locals.user.member==='admin'  ? 'checked' : '' %>>
+                        <label for="admin">Admin</label>
+                    </div>
+                </div>
+                <div class="submitBtn">
+                    <button>Update</button>
+                </div>
+            </form>
+        <% } else { %>
+            <form class="authForm" action="<%= `${locals.baseUrl}/join` %>" method="POST">
+                <div class="signInInput">
+                    What's the name of the project that teaches Ruby and JS?
+                </div>
+                <div class="signInInput">
+                    <label for="answer"></label>
+                    <input id="answer" name="answer" placeholder="Hint: Norse Allfather" type="text" required>
+                </div>
+            </form>
+        <% } %>
+    </div>
+</body>
+
+</html>

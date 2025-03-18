@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header', { title: title }) %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="/css/posts.css">
+<body>
+    <%- include('partials/nav') %>
+    <%- include("partials/alerts.ejs") %>
+    <div class="container postsContainer">
+        <%- include("partials/errors.ejs") %>
+        <% if (locals.user) { %>
+            <% if (!locals.user.member) { %>
+                <div class="postCard caution">
+                    <i class="fa-solid fa-circle-exclamation"></i> Solve our <a href="/auth/account">riddle</a> or 
+                    to complete your onboarding.
+                </div>
+            <% } %>
+            <% if (locals.user.member==='admin') { %>
+                <div class="newPost">
+                    <form class="newPostForm" action="<%= `${locals.baseUrl}/add` %>" method="POST">
+                        <div>
+                            <label for="title"></label>
+                            <input id="title" name="title" placeholder="Post Title" type="text" maxlength="60" required>
+                            <span id="titleCounter">60/60</span>
+                        </div>
+                        <div>
+                            <label for="content"></label>
+                            <textarea id="content" name="content" placeholder="Enter Content...." maxlength="300" rows="4" required></textarea>
+                            <span id="contentCounter">300/300</span>
+                        </div>
+                        <div class="addPost">
+                            <button>&#43; Post</button>
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+            <% posts.forEach((post) => { %>
+                <div class="postCard">
+                    <% if ((locals.user.member==='basic' && locals.user.username===post.username) || locals.user.member==='admin') { %>
+                        <div class="cardDelete">
+                            <a href="<%= `${locals.baseUrl}/delete?pid=${post.post_id}` %>">
+                                <i class="fa-solid fa-trash fa-fade" style="--fa-animation-duration: 5s; --fa-fade-opacity: 0.6;"></i>
+                            </a>
+                        </div>
+                    <% } %>
+                    <div class="cardTitle"><%= post.title %></div>
+                    <div class="cardDetails">
+                        <div class="cardAuthor">
+                            <i class="fa-regular fa-user"></i>
+                            <%= locals.user.member ? post.username : '????' %>
+                        </div>
+                        <div class="cardTime">
+                            <i class="fa-solid fa-clock"></i> 
+                            <%= locals.user.member ? dtFmtr(post.posted) : '????' %>
+                        </div>
+                    </div>
+                    <div class="cardBody"><%= post.body %></div>
+                </div>
+            <% }) %>
+        
+        <% } else { %>
+            <div class="postCard caution">
+                <i class="fa-solid fa-circle-exclamation"></i> <a href="/auth/signin">Sign In</a> or 
+                <a href="/auth/register">create an account</a> to view authors and timestamps of posts.
+            </div>
+            <% posts.forEach((post) => { %>
+                <div class="postCard">
+                    <div class="cardTitle"><%= post.title %></div>
+                    <div class="cardDetails">
+                        <div class="cardAuthor"><i class="fa-regular fa-user"></i> ????</div>
+                        <div class="cardTime"><i class="fa-solid fa-clock"></i> ????</div>
+                    </div>
+                    <div class="cardBody"><%= post.body %></div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+    <script src="/scripts/char_count.js"></script>
+</body>
+</html>

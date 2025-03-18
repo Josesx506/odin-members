@@ -1,0 +1,24 @@
+.indexContainer {
+    display: block;
+    text-align: center;
+}
+
+h2 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.homeDiv {
+    margin-top: 1em;
+    & a {
+        text-decoration: underline;
+        vertical-align: baseline;
+        &:hover {
+            color: #2f91ec;
+        }
+    }
+}
+
+code {
+    font-family: Montserrat;
+}

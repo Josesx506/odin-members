@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+html {
+    overflow-y: scroll;
+    scrollbar-width: 0.05rem;
+}
+
+body {
+    width: min(95%, 1200px);
+    margin: 0.5rem auto;
+    /* background-color: #f5f5f5; */
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #80b8ee;
+    color: white;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    margin-bottom: 0.5em;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    & a {
+        color: rgb(255, 220, 125);
+        transition: opacity 0.3s ease;
+    }
+}
+
+.logo a:hover {
+    opacity: 0.75;
+}
+
+/* Mobile Navigation Links - Hidden by Default */
+.nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #80b8ee;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1;
+    list-style: none;
+    font-family: Monteserrat;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0.75em 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: black;
+}
+
+/* Mobile Hamburger Menu - Visible by Default */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 3px;
+    background-color: white;
+    margin: 2px 0;
+    border-radius: 2px;
+}
+
+.alert-popup {
+    position: absolute;
+    text-transform: capitalize;
+    display: inline-block;
+    background-color: whitesmoke;
+    color: #2f91ec;
+    margin-top: 1em;
+    padding: 0.2em 0.6em;
+    border-radius: 0.3em;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
+}
+
+.alert-popup.show::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #2f91ec;
+    border-radius: 0.3em;
+}
+  
+.alert-popup.show {
+    transform: translateX(25%);
+}
+
+
+
+/* Desktop Styles */
+@media (min-width: 620px) {
+    .navBar {
+      padding: 0.5rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+    }
+
+    /* Hide Hamburger on Desktop */
+    .hamburger {
+      display: none;
+    }
+
+    /* Show Nav Links Horizontally on Desktop */
+    .nav-links {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .nav-links li {
+      font-size: 1.2rem;
+      margin: 0 2rem 0 0;
+    }
+}

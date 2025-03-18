@@ -1,0 +1,21 @@
+<nav class="navBar">
+    <div class="logo"><a href="/">MicroBlog</a></div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="https://josesx506.github.io/Odin_Project_FS/">Odin</a></li>
+        <li><a href="<%= `/posts` %>">Posts</a></li>
+        <% if (!locals.user) {%>
+            <li><a href="<%= `/auth/signin` %>">Sign In</a></li>
+            <li><a href="<%= `/auth/register` %>">Sign Up</a></li>
+        <% } else { %>
+            <li><a href="<%= `/auth/account` %>">Account</a></li>
+            <li><a href="<%= `/auth/signout` %>">Sign Out</a></li>
+        <% } %>
+    </ul>
+    
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>

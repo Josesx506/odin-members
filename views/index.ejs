@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header', { title: title }) %>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="/css/posts.css">
+<body>
+    <%- include('partials/nav') %>
+    <div class="container indexContainer">
+        <h2>Welcome to the Members only club</h2>
+        <code class="homeDiv">All Guests are welcome to read anonymous stories</code>
+        <div class="homeDiv">
+            <a href="/auth/register">Sign Up</a> to join our community
+        </div>
+        <div class="homeDiv">
+            <a href="/auth/signin">Sign In</a> to continue where you left off
+        </div>
+        <div class="homeDiv">
+            Answer the riddle to upgrade your membership  🎉.
+        </div>
+        <div class="homeDiv">
+            Basic users can view post authors and delete only their posts.
+        </div>
+        <div class="homeDiv">
+            Unlock our top tier membership to delete any post.
+        </div>
+        <div class="homeDiv">
+            <a href="/posts"  style="--fa-animation-duration: 10s;">
+                Additional Posts <i class="fa-solid fa-blog fa-beat"></i>
+            </a>
+        </div>
+    </div>
+    <div class="container postsContainer">
+        <% posts.forEach((post) => { %>
+            <div class="postCard">
+                <div class="cardTitle"><%= post.title %></div>
+                <div class="cardBody"><%= post.body %></div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

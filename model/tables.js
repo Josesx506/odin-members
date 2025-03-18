@@ -1,0 +1,1 @@
+// This is where db model classes should exist

@@ -1,0 +1,83 @@
+
+.formHolder {
+    display: flex;
+    flex-direction: column;
+    width: min(90%, 400px);
+    margin: 2em auto;
+    background-color: white;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.formTitle {
+    text-align: center;
+    margin: 1.2em 1em 0 0;
+    & h3 {
+        color: #2f91ec;
+    }
+    & div {
+        padding-top: 0.5em;
+        font-size: 0.9rem;
+    }
+}
+
+.authForm {
+    margin-top: 2em;
+    font-size: 1rem;
+}
+
+
+.signUpInput, .signInInput {
+    margin-bottom: 1.5em;
+}
+
+.signUpInput input, .signInInput input {
+    border: 0;
+    border-bottom: 1px solid darkgray;
+    background-color: transparent;
+    font-family: Montserrat;
+    width: 100%;
+    font-size: inherit;
+    padding: 0.25em 0.5em;
+}
+
+.adminRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.adminInput {
+    justify-self: center;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    & label {
+        text-transform: uppercase;
+        font-family: Poppins;
+        font-weight: 500;
+    }
+    &:has(input[type="radio"]:checked) {
+        background-color: #2f91ec;
+        color: white;
+    }
+}
+
+
+
+.submitBtn {
+    width: fit-content;
+    margin: 0 auto;
+    & button {
+        padding: 0.3em 0.6em;
+        border-radius: 0.4em;
+        border: 1px solid darkgray;
+        font-size: inherit;
+    }
+    & button:hover {
+        cursor: pointer;
+    }
+}

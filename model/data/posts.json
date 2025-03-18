@@ -1,0 +1,48 @@
+[
+    {
+      "user_id": 1,
+      "title": "The Power of Recursion in Coding",
+      "body": "Recursion is a function calling itself. Its useful for tasks like tree traversal but can lead to stack overflow if not controlled."
+    },
+    {
+      "user_id": 1,
+      "title": "Understanding API Requests",
+      "body": "APIs let programs communicate. A GET request fetches data, while a POST sends data. Always handle errors and response codes!"
+    },
+    {
+      "user_id": 1,
+      "title": "Seismic Waves and Earths Structure",
+      "body": "Seismic waves help us understand Earths layers. P-waves travel through all states, but S-waves only move through solids."
+    },
+    {
+      "user_id": 2,
+      "title": "Why Asynchronous Code Matters",
+      "body": "Async programming prevents blocking. JavaScripts event loop and Promises help execute tasks efficiently without freezing apps."
+    },
+    {
+      "user_id": 2,
+      "title": "Version Control is a Lifesaver",
+      "body": "Using Git helps track changes and collaborate. Always commit meaningful updates and use branches for testing new features."
+    },
+    {
+      "user_id": 2,
+      "title": "Plate Tectonics Explained",
+      "body": "Earths crust is divided into plates that move over time. Their interaction causes earthquakes, mountains, and ocean formation."
+    },
+    {
+      "user_id": 3,
+      "title": "Big O Notation in Simple Terms",
+      "body": "Big O helps measure code efficiency. O(1) is constant time, O(n) grows linearly, and O(n²) is slow for large inputs."
+    },
+    {
+      "user_id": 3,
+      "title": "REST vs GraphQL: Choosing the Right API",
+      "body": "REST is simple and caches well, but GraphQL lets clients request specific data, reducing over-fetching."
+    },
+    {
+      "user_id": 3,
+      "title": "Magnetic Field Reversals in Earths History",
+      "body": "Earths magnetic field flips every few hundred thousand years. Rock records show past reversals, helping us study plate movements."
+    }
+]
+  
