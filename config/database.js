@@ -82,14 +82,21 @@ try {
 
 async function main() {
   console.log("populating db...");
-  loadUsers();
   const client = new Client({connectionString: process.env.DBURI});
   await client.connect();
-  await client.query(CREATE_USERS);
-  await client.query(CREATE_POSTS);
-  await client.query(CREATE_SESSIONS);
-  await client.query(insertUSERS);
-  await client.query(insertPOSTS);
+  // Check if the db has any values 
+  const { rows } = await client.query("SELECT COUNT(*) FROM mem_users");
+  if (parseInt(rows[0].count) === 0) {
+    console.log("DB empty, populating db");
+    loadUsers();
+    await client.query(CREATE_USERS);
+    await client.query(CREATE_POSTS);
+    await client.query(CREATE_SESSIONS);
+    await client.query(insertUSERS);
+    await client.query(insertPOSTS);
+  } else {
+    console.log("DB contains values, skipping seeding");
+  }
   await client.end();
   console.log("table creation completed");
 }
